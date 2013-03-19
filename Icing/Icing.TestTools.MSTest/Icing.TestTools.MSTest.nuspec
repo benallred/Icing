@@ -8,7 +8,7 @@
 		<owners>$author$</owners>
 		<licenseUrl>http://icing.codeplex.com/license</licenseUrl>
 		<projectUrl>https://github.com/benallred/Icing</projectUrl>
-		<iconUrl>https://github.com/benallred/Icing/blob/master/Icing/Images/Icing.32x32.png</iconUrl>
+		<iconUrl>https://raw.github.com/benallred/Icing/master/Icing/Images/Icing.32x32.png</iconUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>$description$</description>
 		<releaseNotes>
