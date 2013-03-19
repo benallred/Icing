@@ -6,7 +6,7 @@
 		<title>$title$</title>
 		<authors>$author$</authors>
 		<owners>$author$</owners>
-		<licenseUrl>http://icing.codeplex.com/license</licenseUrl>
+		<licenseUrl>https://github.com/benallred/Icing#readme</licenseUrl>
 		<projectUrl>https://github.com/benallred/Icing</projectUrl>
 		<iconUrl>https://raw.github.com/benallred/Icing/master/Icing/Images/Icing.32x32.png</iconUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
