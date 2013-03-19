@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package>
+	<metadata>
+		<id>$id$</id>
+		<version>$version$</version>
+		<title>$title$</title>
+		<authors>$author$</authors>
+		<owners>$author$</owners>
+		<licenseUrl>http://icing.codeplex.com/license</licenseUrl>
+		<projectUrl>https://github.com/benallred/Icing</projectUrl>
+		<iconUrl>https://github.com/benallred/Icing/blob/master/Icing/Images/Icing.32x32.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>$description$</description>
+		<releaseNotes>
+			Added AssertEx
+			Added ExceptionAssertEx
+			-	Throws
+			Added StringAssertEx
+			-	IsEmpty
+			-	IsNotEmpty
+			-	IsNullOrEmpty
+			-	IsNotNullOrEmpty
+			-	IsNullOrWhiteSpace
+			-	IsNotNullOrWhiteSpace
+		</releaseNotes>
+		<copyright>Copyright 2013</copyright>
+		<tags>extension extensions mstest unit test testing assert</tags>
+	</metadata>
+</package>
