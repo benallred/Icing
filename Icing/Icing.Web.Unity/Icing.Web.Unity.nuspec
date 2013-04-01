@@ -12,21 +12,9 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>$description$</description>
 		<releaseNotes>
-			Added String extensions
-			-	IsNullOrEmpty
-			-	IsNotNullOrEmpty
-			-	IsNullOrWhiteSpace
-			-	IsNotNullOrWhiteSpace
-			-	DoesNotEndWith
-			-	EnsureEndsWith
-			-	Format
-			-	PadNumber
-			-	ToInt32
-			-	Trim
-			Added Int32 extensions
-			-	PadNumber
+			Added UnityDependencyResolver
 		</releaseNotes>
 		<copyright>Copyright $author$</copyright>
-		<tags>extension extensions string int system</tags>
+		<tags>extension extensions web mvc webapi unity ioc di inversion of control dependency injection</tags>
 	</metadata>
 </package>

@@ -139,21 +139,6 @@ namespace Icing
 							(match.Groups[FormatTokenGroupName].Value == pair.Key
 								? pair.Value : match.Value))));
 
-			#region Preceding LINQ expression equivalent to:
-/*
-			string replaced = source;
-
-			foreach (KeyValuePair<string, string> pair in replacements)
-			{
-				KeyValuePair<string, string> pairSafe = pair;
-				replaced = REPLACE_TOKENS_FORMAT.Replace(replaced,
-					new MatchEvaluator(match =>
-						(match.Groups[REPLACE_TOKENS_TOKEN_GROUP_NAME].Value == pairSafe.Key
-							? pairSafe.Value : match.Value)));
-			}
-*/
-			#endregion
-
 			return replaced.Replace("{{", "{").Replace("}}", "}");
 		}
 

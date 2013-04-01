@@ -23,7 +23,7 @@
 			-	IsNullOrWhiteSpace
 			-	IsNotNullOrWhiteSpace
 		</releaseNotes>
-		<copyright>Copyright 2013</copyright>
+		<copyright>Copyright $author$</copyright>
 		<tags>extension extensions mstest unit test testing assert</tags>
 	</metadata>
 </package>

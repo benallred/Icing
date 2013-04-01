@@ -9,6 +9,8 @@ Assemblies and namespaces match those of the System namespaces.  Current assembl
 	*	String extensions, etc
 *	Icing.TestTools.MSTest
 	*	MSTest Assert extensions
+*	Icing.Web.Unity
+	*	Unity IoC container helpers
 *	Icing.Tests
 	*	Unit tests for all Icing projects
 
