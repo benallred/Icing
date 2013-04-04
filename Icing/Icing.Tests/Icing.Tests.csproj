@@ -73,6 +73,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Core\Linq\TestOf_Enumerable.cs" />
     <Compile Include="Core\TestOf_Int32Extensions.cs" />
     <Compile Include="Core\TestOf_StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
