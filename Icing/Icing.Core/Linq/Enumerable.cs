@@ -11,18 +11,37 @@ namespace Icing.Linq
 		#region Methods
 
 		/// <summary>
+		/// Produces the set union of two sequences according to a key.
+		/// </summary>
+		/// <typeparam name="TSource">The type of the elements of the input sequences.</typeparam>
+		/// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
+		/// <param name="first">An <see cref="IEnumerable&lt;T&gt;"/> whose distinct elements form the first set for the union.</param>
+		/// <param name="second">An <see cref="IEnumerable&lt;T&gt;"/> whose distinct elements form the second set for the union.</param>
+		/// <param name="keySelector">A function to extract a key from an element.</param>
+		/// <returns>An <see cref="IEnumerable&lt;T&gt;"/> that contains the elements from both input sequences, excluding duplicates.</returns>
+		/// <exception cref="ArgumentNullException"><paramref name="first"/>, <paramref name="second"/>, or <paramref name="keySelector"/> is null</exception>
+		public static IEnumerable<TSource> Union<TSource, TKey>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector)
+		{
+			return first.Union(second, new LambdaEqualityComparer<TSource>((x, y) => keySelector(x).Equals(keySelector(y))));
+		}
+
+/*
+		/// <summary>
 		/// Produces the set union of two sequences by using a predicate to compare.
 		/// </summary>
 		/// <typeparam name="TSource">The type of the elements of the input sequences.</typeparam>
+		/// <typeparam name="TKey">The type of the key returned by <param name="keySelector"/>.</typeparam>
 		/// <param name="first">An <see cref="IEnumerable&lt;T&gt;"/> whose distinct elements form the first set for the union.</param>
 		/// <param name="second">An <see cref="IEnumerable&lt;T&gt;"/> whose distinct elements form the second set for the union.</param>
-		/// <param name="comparer">The comparer.</param>
+		/// <param name="keySelector">A function to extract a key from an element.</param>
+		/// <param name="comparer">The predicate to compare values.</param>
 		/// <returns>An <see cref="IEnumerable&lt;T&gt;"/> that contains the elements from both input sequences, excluding duplicates.</returns>
-		/// <exception cref="ArgumentNullException">first or second is null</exception>
-		public static IEnumerable<TSource> Union<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TSource, bool> comparer)
+		/// <exception cref="ArgumentNullException"><paramref name="first"/>, <paramref name="second"/>, <paramref name="keySelector"/>, or <paramref name="comparer"/> is null</exception>
+		public static IEnumerable<TSource> Union<TSource, TKey>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, Func<TKey, TKey, bool> comparer)
 		{
-			return first.Union(second, new LambdaEqualityComparer<TSource>(comparer));
+			return first.Union(second, new LambdaEqualityComparer<TSource>((x, y) => comparer(keySelector(x), keySelector(y))));
 		}
+*/
 
 		#endregion
 

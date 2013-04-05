@@ -1,15 +1,23 @@
 Icing
 =====
 
-Collection of helper classes, extension methods, and other utilities for .NET.  All methods/utilities are unit tested.  Code coverage standard is 100%.
+Collection of extension methods, helper classes, and other utilities for .NET.  Extreme effort is made to make sure that all methods act and are documented like their core framework counterparts.
 
-Assemblies and namespaces match those of the System namespaces.  Current assemblies include:
+Packages can be installed via [NuGet](http://www.nuget.org/packages?q=Icing+Author%3A%22Ben+Allred%22).
 
-*	Icing.Core
-	*	String extensions, etc
-*	Icing.TestTools.MSTest
+####Standards####
+*	Assemblies and namespaces match those of the System namespaces
+*	All methods/utilities have XML documentation
+*	All methods/utilities are unit tested
+*	Code coverage 100%
+
+####Assemblies####
+
+*	[Icing.Core](http://www.nuget.org/packages/Icing.Core/)
+	*	String extensions, LINQ extensions, etc
+*	[Icing.TestTools.MSTest](http://www.nuget.org/packages/Icing.TestTools.MSTest/)
 	*	MSTest Assert extensions
-*	Icing.Web.Unity
+*	[Icing.Web.Unity](http://www.nuget.org/packages/Icing.Web.Unity/)
 	*	Unity IoC container helpers
 *	Icing.Tests
 	*	Unit tests for all Icing projects
