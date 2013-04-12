@@ -213,6 +213,23 @@ namespace Icing
 			return trimmed;
 		}
 
+		/// <summary>
+		/// Reverses the sequence of the characters in the entire string.
+		/// </summary>
+		/// <param name="source">The source.</param>
+		/// <returns>The reverse of the current string.</returns>
+		/// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
+		public static string Reverse(this string source)
+		{
+			if (source == null)
+			{
+				throw new ArgumentNullException("source");
+			}
+			char[] chars = source.ToCharArray();
+			Array.Reverse(chars);
+			return new string(chars);
+		}
+
 		#endregion
 	}
 }

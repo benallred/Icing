@@ -249,6 +249,22 @@ namespace Icing.Tests.Core
 			ExceptionAssertEx.Throws<NullReferenceException>(() => StringExtensions.Trim(null , "abc"));
 		}
 
+		[TestMethod]
+		public void Reverse()
+		{
+			ExceptionAssertEx.Throws<ArgumentNullException>(() => StringExtensions.Reverse(null));
+			Assert.AreEqual("", "".Reverse());
+			Assert.AreEqual(" ", " ".Reverse());
+			Assert.AreEqual("    ", "    ".Reverse());
+			Assert.AreEqual("a", "a".Reverse());
+			Assert.AreEqual("aaaa", "aaaa".Reverse());
+			Assert.AreEqual("asdf", "fdsa".Reverse());
+			Assert.AreEqual("ㅑㅏㄷㄴㄱ", "ㄱㄴㄷㅏㅑ".Reverse());
+			Assert.AreEqual("용지정", "정지용".Reverse());
+			Assert.AreEqual("勇智鄭", "鄭智勇".Reverse());
+			Assert.AreEqual("0987654321험시zyxwvutsrqponmlkjihgfedcba", "abcdefghijklmnopqrstuvwxyz시험1234567890".Reverse());
+		}
+
 		#endregion
 
 		#region Helper Classes
