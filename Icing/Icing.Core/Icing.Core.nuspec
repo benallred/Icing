@@ -13,6 +13,7 @@
 		<description>$description$</description>
 		<releaseNotes>
 			Add IEnumerable&lt;T&gt; extension Union that takes a lambda expression
+			Add string extension Reverse
 		</releaseNotes>
 		<copyright>Copyright $author$</copyright>
 		<tags>extension extensions system core string int linq</tags>
