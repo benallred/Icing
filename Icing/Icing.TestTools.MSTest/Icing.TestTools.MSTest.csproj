@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="AssertEx.cs" />
     <Compile Include="ExceptionAssertEx.cs" />
     <Compile Include="StringAssertEx.cs" />

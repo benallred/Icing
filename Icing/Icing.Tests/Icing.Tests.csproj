@@ -73,6 +73,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Core\Linq\TestOf_Enumerable.cs" />
     <Compile Include="Core\TestOf_Int32Extensions.cs" />
     <Compile Include="Core\TestOf_StringExtensions.cs" />
