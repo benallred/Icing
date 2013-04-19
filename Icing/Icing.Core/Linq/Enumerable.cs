@@ -22,7 +22,8 @@ namespace Icing.Linq
 		/// <exception cref="ArgumentNullException"><paramref name="first"/>, <paramref name="second"/>, or <paramref name="keySelector"/> is null</exception>
 		public static IEnumerable<TSource> Union<TSource, TKey>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector)
 		{
-			return first.Union(second, new LambdaEqualityComparer<TSource>((x, y) => keySelector(x).Equals(keySelector(y))));
+//			return first.Union(second, new LambdaEqualityComparer<TSource>((x, y) => keySelector(x).Equals(keySelector(y))));
+			return first.Union(second, new KeyEqualityComparer<TSource, TKey>(keySelector));
 		}
 
 /*
@@ -48,6 +49,48 @@ namespace Icing.Linq
 		#region Helper Classes
 
 		/// <summary>Defines methods to support the comparison of objects for equality.</summary>
+		/// <typeparam name="TSource">The type of objects from which to select a key.</typeparam>
+		/// <typeparam name="TKey">The type of objects to compare.</typeparam>
+		private class KeyEqualityComparer<TSource, TKey> : IEqualityComparer<TSource>
+		{
+			/// <summary>Gets or sets the key selector.</summary>
+			/// <value>The key selector.</value>
+			private Func<TSource, TKey> KeySelector { get; set; }
+
+			/// <summary>
+			/// Initializes a new instance of the <see cref="KeyEqualityComparer&lt;TSource, TKey&gt;"/> class.
+			/// </summary>
+			/// <param name="keySelector">The key selector.</param>
+			public KeyEqualityComparer(Func<TSource, TKey> keySelector)
+			{
+				KeySelector = keySelector;
+			}
+
+			/// <summary>
+			/// Determines whether the specified objects are equal.
+			/// </summary>
+			/// <returns><c>true</c> if the specified objects are equal; otherwise, <c>false</c>.</returns>
+			/// <param name="x">The first object of type T to compare.</param>
+			/// <param name="y">The second object of type T to compare.</param>
+			public bool Equals(TSource x, TSource y)
+			{
+				return KeySelector(x).Equals(KeySelector(y));
+			}
+
+			/// <summary>
+			/// Returns a hash code for the specified object.
+			/// </summary>
+			/// <returns>A hash code for the specified object.</returns>
+			/// <param name="obj">The <see cref="T:System.Object"/> for which a hash code is to be returned.</param>
+			/// <exception cref="T:System.ArgumentNullException">The type of <paramref name="obj"/> is a reference type and <paramref name="obj"/> is null.</exception>
+			public int GetHashCode(TSource obj)
+			{
+				return obj.GetHashCode();
+			}
+		}
+
+/*
+		/// <summary>Defines methods to support the comparison of objects for equality.</summary>
 		/// <typeparam name="T">
 		///	<para>The type of objects to compare.</para>
 		///	<para>This type parameter is contravariant. That is, you can use either the type you specified or any type
@@ -61,7 +104,7 @@ namespace Icing.Linq
 			private Func<T, T, bool> EqualityComparer { get; set; }
 
 			/// <summary>
-			/// Initializes a new instance of the <see cref="LambdaEqualityComparer{T}"/> class.
+			/// Initializes a new instance of the <see cref="LambdaEqualityComparer&lt;T&gt;"/> class.
 			/// </summary>
 			/// <param name="equalityComparer">The equality comparer.</param>
 			public LambdaEqualityComparer(Func<T, T, bool> equalityComparer)
@@ -95,6 +138,7 @@ namespace Icing.Linq
 				return 0;
 			}
 		}
+*/
 
 		#endregion
 	}
