@@ -15,6 +15,8 @@ Packages can be installed via [NuGet](http://www.nuget.org/packages?q=Icing+Auth
 
 *	[Icing.Core](http://www.nuget.org/packages/Icing.Core/)
 	*	String extensions, LINQ extensions, etc
+*	[Icing.LINQPad](http://www.nuget.org/packages/Icing.LINQPad/)
+	*	LINQPad Dump() extensions, etc
 *	[Icing.TestTools.MSTest](http://www.nuget.org/packages/Icing.TestTools.MSTest/)
 	*	MSTest Assert extensions
 *	[Icing.Web.Unity](http://www.nuget.org/packages/Icing.Web.Unity/)

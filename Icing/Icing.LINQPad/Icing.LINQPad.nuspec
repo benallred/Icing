@@ -12,12 +12,9 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>$description$</description>
 		<releaseNotes>
-			Add Stats object
-			-	Calculates and formats running totals, averages, etc, for an arbitrary statistic
-			Add Algorithm object
-			-	Encapsulates information about an algorithm and its performance. Helps in benchmarking execution time.
+			Add Benchmark class to help in comparing and pretty-printing the execution times of algorithms.
 		</releaseNotes>
 		<copyright>Copyright $author$</copyright>
-		<tags>extension extensions system core string int linq performance benchmark benchmarking</tags>
+		<tags>extension extensions linq pad linqpad dump performance benchmark benchmarking</tags>
 	</metadata>
 </package>

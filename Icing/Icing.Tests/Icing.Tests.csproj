@@ -76,9 +76,12 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Core\Diagnostics\TestOf_Algorithm.cs" />
+    <Compile Include="Core\Diagnostics\TestOf_Stats.cs" />
     <Compile Include="Core\Linq\TestOf_Enumerable.cs" />
     <Compile Include="Core\TestOf_Int32Extensions.cs" />
     <Compile Include="Core\TestOf_StringExtensions.cs" />
+    <Compile Include="LINQPad\Diagnostics\TestOf_Benchmark.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestTools.MSTest\TestOf_StringAssertEx.cs" />
     <Compile Include="TestTools.MSTest\TestOf_ExceptionAssertEx.cs" />
@@ -89,6 +92,10 @@
     <ProjectReference Include="..\Icing.Core\Icing.Core.csproj">
       <Project>{5b6eb7dc-ec21-4d7d-a569-0d541d49a0d2}</Project>
       <Name>Icing.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Icing.LINQPad\Icing.LINQPad.csproj">
+      <Project>{f2239c51-3c45-411f-a2ef-84a63d595b06}</Project>
+      <Name>Icing.LINQPad</Name>
     </ProjectReference>
     <ProjectReference Include="..\Icing.TestTools.MSTest\Icing.TestTools.MSTest.csproj">
       <Project>{A0DBA010-B513-4C32-BA8F-A012779F01F1}</Project>
