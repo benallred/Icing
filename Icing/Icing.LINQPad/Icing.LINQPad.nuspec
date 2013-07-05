@@ -12,7 +12,7 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>$description$</description>
 		<releaseNotes>
-			Add Benchmark class to help in comparing and pretty-printing the execution times of algorithms.
+			Add Benchmark.CompareExecutionTime() overload and change List in signature to IList.
 		</releaseNotes>
 		<copyright>Copyright $author$</copyright>
 		<tags>extension extensions linq pad linqpad dump performance benchmark benchmarking</tags>

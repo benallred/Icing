@@ -21,19 +21,19 @@ namespace Icing.LINQPad.Diagnostics
 		/// </param>
 		/// <param name="algorithms">The algorithms to compare.</param>
 		/// <returns>The list of algorithms, sorted from fastest to slowest, with their <see cref="Algorithm.ExecutionTime"/> property set.</returns>
-		public static List<Algorithm> CompareExecutionTime(int numberOfIterations, bool reportIndividualIterations, List<Algorithm> algorithms)
+		public static IList<Algorithm> CompareExecutionTime(int numberOfIterations, bool reportIndividualIterations, IList<Algorithm> algorithms)
 		{
 			if (algorithms == null || !algorithms.Any())
 			{
 				throw new ArgumentNullException("algorithms");
 			}
 			
-			algorithms.ForEach(algorithm =>
+			foreach (Algorithm algorithm in algorithms)
 			{
 				("Running " + algorithm.Name).Dump();
 				algorithm.BenchmarkAndCacheExecutionTime(numberOfIterations, reportIndividualIterations);
 				"\tDone".Dump();
-			});
+			}
 
 			"".Dump();
 			("Total iterations: " + numberOfIterations.ToString("n0")).Dump();
@@ -47,6 +47,21 @@ namespace Icing.LINQPad.Diagnostics
 			}
 			
 			return algorithms;
+		}
+
+		/// <summary>
+		/// Benchmarks and compares the execution time stats of the given algorithms.
+		/// </summary>
+		/// <param name="numberOfIterations">The number of iterations to run.</param>
+		/// <param name="reportIndividualIterations">
+		/// <para>If set to <c>true</c>, reports individual iteration stats; if <c>false</c>, reports average iteration stats.</para>
+		/// <para>If the algorithm runs really fast, the floating point calculations will come out to zero, so you will want to set this to <c>false</c>.</para>
+		/// </param>
+		/// <param name="algorithms">The algorithms to compare.</param>
+		/// <returns>The list of algorithms, sorted from fastest to slowest, with their <see cref="Algorithm.ExecutionTime"/> property set.</returns>
+		public static IList<Algorithm> CompareExecutionTime(int numberOfIterations, bool reportIndividualIterations, params Algorithm[] algorithms)
+		{
+			return CompareExecutionTime(numberOfIterations, reportIndividualIterations, (IList<Algorithm>)algorithms);
 		}
 
 		private static void DumpAlgorithmStats(Algorithm algorithm, Algorithm compareTo, bool reportIndividualIterations)

@@ -15,14 +15,21 @@ namespace Icing.Tests.LINQPad.Diagnostics
 		[TestMethod]
 		public void CompareExecutionTime_Exceptions()
 		{
-			ExceptionAssertEx.Throws<ArgumentNullException>(() => Benchmark.CompareExecutionTime(1, false, null));
+			ExceptionAssertEx.Throws<ArgumentNullException>(() => Benchmark.CompareExecutionTime(1, false, (List<Algorithm>)null));
 			ExceptionAssertEx.Throws<ArgumentNullException>(() => Benchmark.CompareExecutionTime(1, false, new List<Algorithm>()));
+			ExceptionAssertEx.Throws<ArgumentNullException>(() => Benchmark.CompareExecutionTime(1, false));
+			ExceptionAssertEx.Throws<ArgumentNullException>(() => Benchmark.CompareExecutionTime(1, false, (Algorithm[])null));
 		}
 
 		[TestMethod]
 		public void CompareExecutionTime()
 		{
-			List<Algorithm> ordered = Benchmark.CompareExecutionTime(1, false, new List<Algorithm>() { new Algorithm("Slower", () => Thread.Sleep(10)), new Algorithm("Faster", () => Thread.Sleep(1)) });
+			IList<Algorithm> ordered = Benchmark.CompareExecutionTime(1, false, new List<Algorithm>() { new Algorithm("Slower", () => Thread.Sleep(10)), new Algorithm("Faster", () => Thread.Sleep(1)) });
+
+			Assert.AreEqual("Faster", ordered[0].Name);
+			Assert.AreEqual("Slower", ordered[1].Name);
+
+			ordered = Benchmark.CompareExecutionTime(1, false, new Algorithm("Slower", () => Thread.Sleep(10)), new Algorithm("Faster", () => Thread.Sleep(1)));
 
 			Assert.AreEqual("Faster", ordered[0].Name);
 			Assert.AreEqual("Slower", ordered[1].Name);
