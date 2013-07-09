@@ -9,10 +9,16 @@ using IWebApiDependencyResolver = System.Web.Http.Dependencies.IDependencyResolv
 
 namespace Icing.Web.Unity
 {
+	/// <summary>Provides methods that simplify service location and dependency resolution with a Unity container backing.</summary>
 	public class UnityDependencyResolver : IMvcDependencyResolver, IWebApiDependencyResolver
 	{
 		private readonly IUnityContainer UnityContainer;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="UnityDependencyResolver"/> class.
+		/// </summary>
+		/// <param name="unityContainer">The unity container.</param>
+		/// <exception cref="System.ArgumentNullException"><paramref name="unityContainer"/> is null.</exception>
 		public UnityDependencyResolver(IUnityContainer unityContainer)
 		{
 			if (unityContainer == null)
@@ -23,6 +29,11 @@ namespace Icing.Web.Unity
 			UnityContainer = unityContainer;
 		}
 
+		/// <summary>
+		/// Resolves singly registered services that support arbitrary object creation.
+		/// </summary>
+		/// <param name="serviceType">The type of the requested service or object.</param>
+		/// <returns>The requested service or object.</returns>
 		public object GetService(Type serviceType)
 		{
 			try
@@ -35,6 +46,11 @@ namespace Icing.Web.Unity
 			}
 		}
 
+		/// <summary>
+		/// Resolves multiply registered services.
+		/// </summary>
+		/// <param name="serviceType">The type of the requested services.</param>
+		/// <returns>The requested services.</returns>
 		public IEnumerable<object> GetServices(Type serviceType)
 		{
 			try
@@ -47,11 +63,19 @@ namespace Icing.Web.Unity
 			}
 		}
 
+		/// <summary>
+		/// Starts a resolution scope. 
+		/// </summary>
+		/// <returns>The dependency scope.</returns>
 		public IDependencyScope BeginScope()
 		{
 			return this;
 		}
 
+		/// <summary>
+		/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+		/// </summary>
+		/// <filterpriority>2</filterpriority>
 		public void Dispose()
 		{
 			// When BeginScope returns 'this', the Dispose method must be a no-op.

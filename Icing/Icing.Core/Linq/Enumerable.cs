@@ -18,7 +18,7 @@ namespace Icing.Linq
 		/// <param name="second">An <see cref="IEnumerable&lt;T&gt;"/> whose distinct elements form the second set for the union.</param>
 		/// <param name="keySelector">A function to extract a key from an element.</param>
 		/// <returns>An <see cref="IEnumerable&lt;T&gt;"/> that contains the elements from both input sequences, excluding duplicates.</returns>
-		/// <exception cref="ArgumentNullException"><paramref name="first"/>, <paramref name="second"/>, or <paramref name="keySelector"/> is null</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="first"/>, <paramref name="second"/>, or <paramref name="keySelector"/> is null.</exception>
 		public static IEnumerable<TSource> Union<TSource, TKey>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector)
 		{
 //			return first.Union(second, new LambdaEqualityComparer<TSource>((x, y) => keySelector(x).Equals(keySelector(y))));
