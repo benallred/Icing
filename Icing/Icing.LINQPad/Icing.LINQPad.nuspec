@@ -6,7 +6,7 @@
 		<title>$id$</title>
 		<authors>$author$</authors>
 		<owners>$author$</owners>
-		<licenseUrl>https://github.com/benallred/Icing#the-mit-license-mit</licenseUrl>
+		<licenseUrl>https://github.com/benallred/Icing/blob/master/LICENSE.txt</licenseUrl>
 		<projectUrl>https://github.com/benallred/Icing</projectUrl>
 		<iconUrl>https://raw.github.com/benallred/Icing/master/Icing/Images/Icing.128x128.png</iconUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
