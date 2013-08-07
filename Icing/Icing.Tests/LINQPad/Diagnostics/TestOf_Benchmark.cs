@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+
 using Icing.Diagnostics;
 using Icing.LINQPad.Diagnostics;
 using Icing.TestTools.MSTest;
@@ -24,12 +25,12 @@ namespace Icing.Tests.LINQPad.Diagnostics
 		[TestMethod]
 		public void CompareExecutionTime()
 		{
-			IList<Algorithm> ordered = Benchmark.CompareExecutionTime(1, false, new List<Algorithm>() { new Algorithm("Slower", () => Thread.Sleep(10)), new Algorithm("Faster", () => Thread.Sleep(1)) });
+			IList<Algorithm> ordered = Benchmark.CompareExecutionTime(1, false, new List<Algorithm>() { new Algorithm("Slower", () => Thread.Sleep(100)), new Algorithm("Faster", () => Thread.Sleep(1)) });
 
 			Assert.AreEqual("Faster", ordered[0].Name);
 			Assert.AreEqual("Slower", ordered[1].Name);
 
-			ordered = Benchmark.CompareExecutionTime(1, false, new Algorithm("Slower", () => Thread.Sleep(10)), new Algorithm("Faster", () => Thread.Sleep(1)));
+			ordered = Benchmark.CompareExecutionTime(1, false, new Algorithm("Slower", () => Thread.Sleep(100)), new Algorithm("Faster", () => Thread.Sleep(1)));
 
 			Assert.AreEqual("Faster", ordered[0].Name);
 			Assert.AreEqual("Slower", ordered[1].Name);

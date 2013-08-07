@@ -6,15 +6,15 @@
 		<title>$id$</title>
 		<authors>$author$</authors>
 		<owners>$author$</owners>
-		<licenseUrl>https://github.com/benallred/Icing/blob/master/LICENSE.md</licenseUrl>
+		<licenseUrl>https://github.com/benallred/Icing#the-mit-license-mit</licenseUrl>
 		<projectUrl>https://github.com/benallred/Icing</projectUrl>
 		<iconUrl>https://raw.github.com/benallred/Icing/master/Icing/Images/Icing.128x128.png</iconUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>$description$</description>
 		<releaseNotes>
-			Add LINQPadTestFramework. Can be used in conjunction with LINQPad's "My Extensions" Main() method to unit test custom extensions during compilation.
+			Added TestFramework classes
 		</releaseNotes>
 		<copyright>Copyright $author$</copyright>
-		<tags>extension extensions linq pad linqpad dump performance benchmark benchmarking unit test testing</tags>
+		<tags>extension extensions unit test testing</tags>
 	</metadata>
 </package>

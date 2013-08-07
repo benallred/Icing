@@ -4,17 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A0DBA010-B513-4C32-BA8F-A012779F01F1}</ProjectGuid>
+    <ProjectGuid>{F10337FD-DA00-44C1-84EA-C53DD31205D6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Icing.TestTools.MSTest</RootNamespace>
-    <AssemblyName>Icing.TestTools.MSTest</AssemblyName>
+    <RootNamespace>Icing.TestTools</RootNamespace>
+    <AssemblyName>Icing.TestTools</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,7 +21,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>bin\Debug\Icing.TestTools.MSTest.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\Icing.TestTools.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,10 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>bin\Release\Icing.TestTools.MSTest.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\Icing.TestTools.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,19 +46,19 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="AssertEx.cs" />
-    <Compile Include="ExceptionAssertEx.cs" />
-    <Compile Include="StringAssertEx.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestFramework\SimpleTestFramework.cs" />
+    <Compile Include="TestFramework\TestAssemblyResults.cs" />
+    <Compile Include="TestFramework\TestClassFinishedEventArgs.cs" />
+    <Compile Include="TestFramework\TestClassResults.cs" />
+    <Compile Include="TestFramework\TestClassStartedEventArgs.cs" />
+    <Compile Include="TestFramework\TestMethodFinishedEventArgs.cs" />
+    <Compile Include="TestFramework\TestMethodResult.cs" />
+    <Compile Include="TestFramework\TestResultStatus.cs" />
+    <Compile Include="TestFramework\TestMethodStartedEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Icing.TestTools.MSTest.nuspec" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Icing.TestTools\Icing.TestTools.csproj">
-      <Project>{F10337FD-DA00-44C1-84EA-C53DD31205D6}</Project>
-      <Name>Icing.TestTools</Name>
-    </ProjectReference>
+    <None Include="Icing.TestTools.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
