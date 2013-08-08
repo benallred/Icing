@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Icing.TestTools.TestFramework
 {
@@ -17,7 +16,7 @@ namespace Icing.TestTools.TestFramework
 
 		/// <summary>Gets or sets the test method results.</summary>
 		/// <value>The test method results.</value>
-		public IEnumerable<TestMethodResult> TestMethodResults { get; set; }
+		public IList<TestMethodResult> TestMethodResults { get; set; }
 
 		/// <summary>Gets or sets the total execution time of all tests in the class.</summary>
 		/// <value>The total execution time of all tests in the class.</value>
@@ -29,7 +28,7 @@ namespace Icing.TestTools.TestFramework
 		/// <param name="className">The name of the test class.</param>
 		/// <param name="testMethodResults">The test method results.</param>
 		/// <param name="executionTime">The total execution time of all tests in the class.</param>
-		public TestClassResults(string className, IEnumerable<TestMethodResult> testMethodResults, TimeSpan executionTime)
+		public TestClassResults(string className, IList<TestMethodResult> testMethodResults, TimeSpan executionTime)
 		{
 			ClassName = className;
 			TestMethodResults = testMethodResults ?? new List<TestMethodResult>();

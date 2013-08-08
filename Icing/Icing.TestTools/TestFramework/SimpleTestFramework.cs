@@ -37,10 +37,10 @@ namespace Icing.TestTools.TestFramework
 		{
 			Stopwatch stopwatch = Stopwatch.StartNew();
 			
-			IEnumerable<TestClassResults> testClassResults = assembly
+			List<TestClassResults> testClassResults = assembly
 																				.GetTypes()
 																				.Where(type => type.IsPublic && type.GetCustomAttributes(typeof(TTestClassAttribute), false).Any())
-																				.Select(RunTestsInClass);
+																				.Select(RunTestsInClass).ToList();
 			
 			stopwatch.Stop();
 
@@ -66,7 +66,7 @@ namespace Icing.TestTools.TestFramework
 
 			stopwatch.Stop();
 
-			TestClassResults testClassResults = new TestClassResults(classType.Name, testMethodResults, stopwatch.Elapsed);
+			TestClassResults testClassResults = new TestClassResults(classType.Name, testMethodResults.ToList(), stopwatch.Elapsed);
 
 			if (TestClassFinished != null) { TestClassFinished(this, new TestClassFinishedEventArgs(testClassResults)); }
 

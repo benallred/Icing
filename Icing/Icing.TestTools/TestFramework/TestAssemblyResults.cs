@@ -12,7 +12,7 @@ namespace Icing.TestTools.TestFramework
 
 		/// <summary>Gets or sets the test class results.</summary>
 		/// <value>The test class results.</value>
-		public IEnumerable<TestClassResults> TestClassResults { get; set; }
+		public IList<TestClassResults> TestClassResults { get; set; }
 
 		/// <summary>Gets or sets the total execution time of all tests in the assembly.</summary>
 		/// <value>The total execution time of all tests in the assembly.</value>
@@ -23,7 +23,7 @@ namespace Icing.TestTools.TestFramework
 		/// </summary>
 		/// <param name="testClassResults">The test class results.</param>
 		/// <param name="executionTime">The total execution time of all tests in the assembly.</param>
-		public TestAssemblyResults(IEnumerable<TestClassResults> testClassResults, TimeSpan executionTime)
+		public TestAssemblyResults(IList<TestClassResults> testClassResults, TimeSpan executionTime)
 		{
 			TestClassResults = testClassResults ?? new List<TestClassResults>();
 			ExecutionTime = executionTime;
