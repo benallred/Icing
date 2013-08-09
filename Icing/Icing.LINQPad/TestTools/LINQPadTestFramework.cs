@@ -12,6 +12,58 @@ namespace Icing.LINQPad.TestTools
 	/// <typeparam name="TTestClassAttribute">The attribute that defines a test class.</typeparam>
 	/// <typeparam name="TTestMethodAttribute">The attribute that defines a test method.</typeparam>
 	/// <typeparam name="TAssertFailedException">The type of exception that is thrown on failed asserts. Any other exception is considered <see cref="TestResultStatus.Inconclusive"/>.</typeparam>
+	/// <example>
+	/// A sample LINQPad "My Extensions" file might look like this.
+	/// <code>
+	/// void Main()
+	/// {
+	///	new LINQPadTestFramework&lt;TestClassAttribute, TestMethodAttribute, AssertFailedException&gt;().RunTests();
+	/// }
+	/// 
+	/// public static class StringExtensions
+	/// {
+	///	public static string Quoted(this string source, string beginQuote = "\"", string endQuote = null)
+	///	{
+	///		return beginQuote + source + (endQuote ?? beginQuote);
+	///	}
+	/// }
+	/// 
+	/// [TestClass]
+	/// public class TestOf_StringExtensions
+	/// {
+	///	[TestMethod]
+	///	public void Quoted()
+	///	{
+	///		Assert.AreEqual("\"asdf\"", StringExtensions.Quoted("asdf", "\"", null));
+	///		Assert.AreEqual("'asdf'", StringExtensions.Quoted("asdf", "\'", null));
+	///		Assert.AreEqual("(asdf)", StringExtensions.Quoted("asdf", "(", ")"));
+	///	}
+	/// }
+	/// 
+	/// public static class ObjectExtensions
+	/// {
+	///	public static bool NotEquals(this object current, object obj)
+	///	{
+	///		return !current.Equals(obj);
+	///	}
+	/// }
+	/// 
+	/// [TestClass]
+	/// public class TestOf_ObjectExtensions
+	/// {
+	///	[TestMethod]
+	///	public void NotEquals()
+	///	{
+	///		Assert.IsFalse(ObjectExtensions.NotEquals("test", "test"));
+	///		Assert.IsTrue(ObjectExtensions.NotEquals("test", "test2"));
+	/// 
+	///		object o = new object();
+	///		Assert.IsFalse(ObjectExtensions.NotEquals(o, o));
+	///		Assert.IsTrue(ObjectExtensions.NotEquals(new object(), new object()));
+	///	}
+	/// }
+	/// </code>
+	/// </example>
 	public class LINQPadTestFramework<TTestClassAttribute, TTestMethodAttribute, TAssertFailedException>
 		where TTestClassAttribute : Attribute
 		where TTestMethodAttribute : Attribute
