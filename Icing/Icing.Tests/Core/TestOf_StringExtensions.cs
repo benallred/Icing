@@ -163,7 +163,7 @@ namespace Icing.Tests.Core
 		}
 
 		[TestMethod]
-		public void PadNumber()
+		public void PadNumber_Int32()
 		{
 			Assert.AreEqual(  "1",   "1".PadNumber(0, '0'));
 			Assert.AreEqual( "11",  "11".PadNumber(0, '0'));
@@ -182,6 +182,40 @@ namespace Icing.Tests.Core
 			for (int power = 1; power < 4; power++)
 			{
 				for (int i = (int)Math.Pow(10, power - 1); i < Math.Pow(10, power); i++)
+				{
+					Assert.AreEqual(  "1".PadLeft(power, '0'),   "1".PadNumber(i, '0'));
+					Assert.AreEqual( "11".PadLeft(power, '0'),  "11".PadNumber(i, '0'));
+					Assert.AreEqual("111".PadLeft(power, '0'), "111".PadNumber(i, '0'));
+
+/*
+					Assert.AreEqual(  "1".PadLeft(power, '0'),   "1".PadNumber(-1 * i, '0'));
+					Assert.AreEqual( "11".PadLeft(power, '0'),  "11".PadNumber(-1 * i, '0'));
+					Assert.AreEqual("111".PadLeft(power, '0'), "111".PadNumber(-1 * i, '0'));
+*/
+				}
+			}
+		}
+
+		[TestMethod]
+		public void PadNumber_UInt32()
+		{
+			Assert.AreEqual(  "1",   "1".PadNumber(0u, '0'));
+			Assert.AreEqual( "11",  "11".PadNumber(0u, '0'));
+			Assert.AreEqual("111", "111".PadNumber(0u, '0'));
+
+//			ExceptionAssertEx.Throws<ArgumentOutOfRangeException>(() => StringExtensions.PadNumber("1" , -1u, '0')); // Not valid
+			ExceptionAssertEx.Throws<NullReferenceException     >(() => StringExtensions.PadNumber(null,  1u, '0'));
+
+			Assert.AreEqual( "0", "" .PadNumber( 0u, '0'));
+			Assert.AreEqual( "0", "" .PadNumber( 1u, '0'));
+			Assert.AreEqual( "a", "a".PadNumber( 0u, '0'));
+			Assert.AreEqual("0a", "a".PadNumber(10u, '0'));
+			Assert.AreEqual( "b", "" .PadNumber( 0u, 'b'));
+			Assert.AreEqual("ba", "a".PadNumber(10u, 'b'));
+
+			for (int power = 1; power < 4; power++)
+			{
+				for (uint i = (uint)Math.Pow(10, power - 1); i < Math.Pow(10, power); i++)
 				{
 					Assert.AreEqual(  "1".PadLeft(power, '0'),   "1".PadNumber(i, '0'));
 					Assert.AreEqual( "11".PadLeft(power, '0'),  "11".PadNumber(i, '0'));
