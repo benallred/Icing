@@ -12,10 +12,8 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>$description$</description>
 		<releaseNotes>
-			Add Stats object
-			-	Calculates and formats running totals, averages, etc, for an arbitrary statistic
-			Add Algorithm object
-			-	Encapsulates information about an algorithm and its performance. Helps in benchmarking execution time.
+			Add uint overload to PadNumber
+			Add EnumExtensions with GetDescription method
 		</releaseNotes>
 		<copyright>Copyright $author$</copyright>
 		<tags>extension extensions system core string int linq performance benchmark benchmarking</tags>

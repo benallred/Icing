@@ -50,6 +50,7 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="EnumExtensions.cs" />
     <Compile Include="Diagnostics\Algorithm.cs" />
     <Compile Include="Diagnostics\Stats.cs" />
     <Compile Include="Int32Extensions.cs" />
