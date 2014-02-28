@@ -12,8 +12,7 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>$description$</description>
 		<releaseNotes>
-			Add uint overload to PadNumber
-			Add EnumExtensions with GetDescription method
+			Add long/Int64 overload to PadNumber
 		</releaseNotes>
 		<copyright>Copyright $author$</copyright>
 		<tags>extension extensions system core string int linq performance benchmark benchmarking</tags>
