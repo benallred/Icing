@@ -181,6 +181,31 @@ namespace Icing
 		/// to match is less than the length of this instance, the method returns a reference to the existing instance. If the length of the
 		/// maximum number to match is equal to the length of this instance, the method returns a new string that is identical to this instance.</returns>
 		/// <exception cref="ArgumentOutOfRangeException"><paramref name="maxNumberToMatch"/> is less than zero.</exception>
+		public static string PadNumber(this string source, long maxNumberToMatch, char paddingChar = '0')
+		{
+			if (maxNumberToMatch == 0)
+			{
+				maxNumberToMatch = 1;
+			}
+			else if (maxNumberToMatch < 0)
+			{
+				throw new ArgumentOutOfRangeException("maxNumberToMatch");
+			}
+
+			return source.PadLeft(((int)Math.Log10(maxNumberToMatch)) + 1, paddingChar);
+		}
+
+		/// <summary>
+		/// Returns a new string that right-aligns the characters in this instance by padding them on the left with a specified Unicode character,
+		/// for a total length equal to that of the length of the maximum number to match.
+		/// </summary>
+		/// <param name="source">The source.</param>
+		/// <param name="maxNumberToMatch">The maximum number to match.</param>
+		/// <param name="paddingChar">A Unicode padding character.</param>
+		/// <returns>A new string that is equivalent to this instance, but right-aligned and padded on the left with as many paddingChar characters
+		/// as needed to create a length equal to that of the length of the maximum number to match. However, if the length of the maximum number
+		/// to match is less than the length of this instance, the method returns a reference to the existing instance. If the length of the
+		/// maximum number to match is equal to the length of this instance, the method returns a new string that is identical to this instance.</returns>
 		public static string PadNumber(this string source, uint maxNumberToMatch, char paddingChar = '0')
 		{
 			if (maxNumberToMatch == 0)

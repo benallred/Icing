@@ -29,12 +29,6 @@ namespace Icing.Tests.Core
 					Assert.AreEqual(  1.ToString().PadLeft(power, '0'),   1u.PadNumber(i, '0'));
 					Assert.AreEqual( 11.ToString().PadLeft(power, '0'),  11u.PadNumber(i, '0'));
 					Assert.AreEqual(111.ToString().PadLeft(power, '0'), 111u.PadNumber(i, '0'));
-
-/*
-					Assert.AreEqual(  1.ToString().PadLeft(power, '0'),   1.PadNumber(-1 * i, '0'));
-					Assert.AreEqual( 11.ToString().PadLeft(power, '0'),  11.PadNumber(-1 * i, '0'));
-					Assert.AreEqual(111.ToString().PadLeft(power, '0'), 111.PadNumber(-1 * i, '0'));
-*/
 				}
 			}
 		}
