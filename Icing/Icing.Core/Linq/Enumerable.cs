@@ -43,6 +43,30 @@ namespace Icing.Linq
 		}
 */
 
+		/// <summary>
+		/// Generates a sequence of integral numbers within a specified range.
+		/// </summary>
+		/// <param name="start">The value of the first integer in the sequence.</param>
+		/// <param name="count">The number of sequential integers to generate.</param>
+		/// <returns>An <see cref="IEnumerable&lt;Int64&gt;"/> in C# or IEnumerable(Of Int64) in Visual Basic that contains a range of sequential integral numbers.</returns>
+		/// <exception cref="ArgumentOutOfRangeException"><paramref name="count"/> is less than 0.-or-<paramref name="start"/> + <paramref name="count"/> -1 is larger than <see cref="Int64.MaxValue"/>.</exception>
+		public static IEnumerable<long> LongRange(long start, int count)
+		{
+			long num = start + count - 1L;
+
+			if (count < 0 || num > long.MaxValue || (start > 0 && num < 0)) // last condition checks for overflow/wrapping around to a negative long
+			{
+				throw new ArgumentOutOfRangeException("count");
+			}
+			else
+			{
+				for (long i = 0; i < count; i++)
+				{
+					yield return start + i;
+				}
+			}
+		}
+
 		#endregion
 
 		#region Helper Classes

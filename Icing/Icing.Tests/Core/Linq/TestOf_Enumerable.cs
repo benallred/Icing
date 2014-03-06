@@ -67,5 +67,40 @@ namespace Icing.Tests.Core.Linq
 			CollectionAssert.AreEquivalent(new int[] {    2,    4 }, new int[] { 4, 3 }.Union(new int[] { 2, 1 }, (i, j) => i     == j + 1 ).ToList());
 		}
 */
+		
+		[TestMethod]
+		public void LongRange()
+		{
+			ExceptionAssertEx.Throws<ArgumentOutOfRangeException>(() => Icing.Linq.Enumerable.LongRange(0, -1).ToArray());
+			ExceptionAssertEx.Throws<ArgumentOutOfRangeException>(() => Icing.Linq.Enumerable.LongRange(Int64.MaxValue - Int32.MaxValue + 2, Int32.MaxValue).ToArray());
+			ExceptionAssertEx.Throws<ArgumentOutOfRangeException>(() => Icing.Linq.Enumerable.LongRange(Int64.MaxValue, 2).ToArray());
+
+			Assert.AreEqual(0, Icing.Linq.Enumerable.LongRange( 0, 0).LongCount());
+			Assert.AreEqual(1, Icing.Linq.Enumerable.LongRange( 0, 1).LongCount());
+			Assert.AreEqual(0, Icing.Linq.Enumerable.LongRange( 1, 0).LongCount());
+			Assert.AreEqual(1, Icing.Linq.Enumerable.LongRange( 1, 1).LongCount());
+			Assert.AreEqual(0, Icing.Linq.Enumerable.LongRange(-1, 0).LongCount());
+			Assert.AreEqual(1, Icing.Linq.Enumerable.LongRange(-1, 1).LongCount());
+
+			CollectionAssert.AreEquivalent(new long[] {    }, Icing.Linq.Enumerable.LongRange( 0, 0).ToArray());
+			CollectionAssert.AreEquivalent(new long[] {  0 }, Icing.Linq.Enumerable.LongRange( 0, 1).ToArray());
+			CollectionAssert.AreEquivalent(new long[] {    }, Icing.Linq.Enumerable.LongRange( 1, 0).ToArray());
+			CollectionAssert.AreEquivalent(new long[] {  1 }, Icing.Linq.Enumerable.LongRange( 1, 1).ToArray());
+			CollectionAssert.AreEquivalent(new long[] {    }, Icing.Linq.Enumerable.LongRange(-1, 0).ToArray());
+			CollectionAssert.AreEquivalent(new long[] { -1 }, Icing.Linq.Enumerable.LongRange(-1, 1).ToArray());
+
+			CollectionAssert.AreEquivalent(System.Linq.Enumerable.Range(  0,  10).Select(i => (long)i).ToArray(), Icing.Linq.Enumerable.LongRange(  0,  10).ToArray());
+			CollectionAssert.AreEquivalent(System.Linq.Enumerable.Range( 10, 123).Select(i => (long)i).ToArray(), Icing.Linq.Enumerable.LongRange( 10, 123).ToArray());
+			CollectionAssert.AreEquivalent(System.Linq.Enumerable.Range(-10,  10).Select(i => (long)i).ToArray(), Icing.Linq.Enumerable.LongRange(-10,  10).ToArray());
+			CollectionAssert.AreEquivalent(System.Linq.Enumerable.Range(-10,  20).Select(i => (long)i).ToArray(), Icing.Linq.Enumerable.LongRange(-10,  20).ToArray());
+
+			CollectionAssert.AreEquivalent(new long[] { 9876543210, 9876543211, 9876543212 }, Icing.Linq.Enumerable.LongRange(9876543210, 3).ToArray());
+
+			Assert.AreEqual(1, Icing.Linq.Enumerable.LongRange(Int64.MaxValue, 1).LongCount());
+
+			// These two asserts take a long time (no pun intended)
+			Assert.AreEqual(Int32.MaxValue, Icing.Linq.Enumerable.LongRange(Int64.MaxValue - Int32.MaxValue, Int32.MaxValue).LongCount());
+			Assert.AreEqual(Int32.MaxValue, Icing.Linq.Enumerable.LongRange(Int64.MaxValue - Int32.MaxValue + 1, Int32.MaxValue).LongCount());
+		}
 	}
 }
