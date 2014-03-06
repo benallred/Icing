@@ -52,7 +52,7 @@ namespace Icing.Tests.Core.Diagnostics
 			Stats executionTime = algorithm.BenchmarkAndCacheExecutionTime(100, false);
 
 			Assert.AreEqual(100, executionTime.TotalIterations);
-			Assert.IsTrue(1000 < executionTime.Total && executionTime.Total < 1200);
+			Assert.IsTrue(1000 < executionTime.Total && executionTime.Total < 2000, "Actual execution time: " + executionTime.Total);
 			Assert.AreEqual(executionTime.Min, executionTime.Average);
 			Assert.AreEqual(executionTime.Average, executionTime.Max);
 		}
@@ -65,7 +65,7 @@ namespace Icing.Tests.Core.Diagnostics
 			Stats executionTime = algorithm.BenchmarkAndCacheExecutionTime(100, true);
 
 			Assert.AreEqual(100, executionTime.TotalIterations);
-			Assert.IsTrue(1000 < executionTime.Total && executionTime.Total < 1200);
+			Assert.IsTrue(1000 < executionTime.Total && executionTime.Total < 2000, "Actual execution time: " + executionTime.Total);
 			Assert.IsTrue(executionTime.Min < executionTime.Average);
 			Assert.IsTrue(executionTime.Average < executionTime.Max);
 		}
