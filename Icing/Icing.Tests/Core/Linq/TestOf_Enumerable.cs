@@ -30,8 +30,9 @@ namespace Icing.Tests.Core.Linq
 			CollectionAssert.AreEquivalent(new int[] { 1 }, new int[] {      }.Union(new int[] { 1, 1 }, i => i).ToList());
 			CollectionAssert.AreEquivalent(new int[] { 1 }, new int[] { 1    }.Union(new int[] { 1, 1 }, i => i).ToList());
 
-			ExceptionAssertEx.Throws<ArgumentNullException>(() => ((IEnumerable<int>)null).Union(new int[] { }, i => i));
-			ExceptionAssertEx.Throws<ArgumentNullException>(() => new int[] { }           .Union(null         , i => i));
+			ExceptionAssertEx.Throws<ArgumentNullException>(() => ((IEnumerable<int>)null).Union(new int[] { }, i => i              ).ToList());
+			ExceptionAssertEx.Throws<ArgumentNullException>(() => new int[] { }           .Union(null         , i => i              ).ToList());
+			ExceptionAssertEx.Throws<ArgumentNullException>(() => new int[] { }           .Union(new int[] { }, (Func<int, int>)null).ToList());
 		}
 
 /*
@@ -68,6 +69,45 @@ namespace Icing.Tests.Core.Linq
 		}
 */
 		
+		[TestMethod]
+		public void Intersect()
+		{
+			CollectionAssert.AreEquivalent(new int[] {            }, new int[] { 1, 2       }.Intersect(new int[] {       3    }, i => i).ToList());
+			CollectionAssert.AreEquivalent(new int[] {    2       }, new int[] { 1, 2       }.Intersect(new int[] {    2, 3    }, i => i).ToList());
+			CollectionAssert.AreEquivalent(new int[] { 1          }, new int[] { 1, 2       }.Intersect(new int[] { 1,    3    }, i => i).ToList());
+			CollectionAssert.AreEquivalent(new int[] { 1, 2, 3    }, new int[] { 1, 2, 3    }.Intersect(new int[] { 1, 2, 3    }, i => i).ToList());
+			CollectionAssert.AreEquivalent(new int[] { 1,       4 }, new int[] { 1,    3, 4 }.Intersect(new int[] { 1, 2,    4 }, i => i).ToList());
+
+			CollectionAssert.AreEquivalent(new int[] {   }, new int[] {      }.Intersect(new int[] {   }, i => i).ToList());
+			CollectionAssert.AreEquivalent(new int[] {   }, new int[] { 1    }.Intersect(new int[] {   }, i => i).ToList());
+			CollectionAssert.AreEquivalent(new int[] {   }, new int[] {      }.Intersect(new int[] { 1 }, i => i).ToList());
+
+			CollectionAssert.AreEquivalent(new int[] {   }, new int[] { 1, 1 }.Intersect(new int[] {      }, i => i).ToList());
+			CollectionAssert.AreEquivalent(new int[] { 1 }, new int[] { 1, 1 }.Intersect(new int[] { 1    }, i => i).ToList());
+			CollectionAssert.AreEquivalent(new int[] {   }, new int[] {      }.Intersect(new int[] { 1, 1 }, i => i).ToList());
+			CollectionAssert.AreEquivalent(new int[] { 1 }, new int[] { 1    }.Intersect(new int[] { 1, 1 }, i => i).ToList());
+
+			ExceptionAssertEx.Throws<ArgumentNullException>(() => ((IEnumerable<int>)null).Intersect(new int[] { }, i => i              ).ToList());
+			ExceptionAssertEx.Throws<ArgumentNullException>(() => new int[] { }           .Intersect(null         , i => i              ).ToList());
+			ExceptionAssertEx.Throws<ArgumentNullException>(() => new int[] { }           .Intersect(new int[] { }, (Func<int, int>)null).ToList());
+		}
+		
+		[TestMethod]
+		public void Distinct()
+		{
+			CollectionAssert.AreEquivalent(new int[] {         }, new int[] {         }.Distinct(i => i).ToList());
+			CollectionAssert.AreEquivalent(new int[] { 1       }, new int[] { 1       }.Distinct(i => i).ToList());
+			CollectionAssert.AreEquivalent(new int[] { 1, 2    }, new int[] { 1, 2    }.Distinct(i => i).ToList());
+			CollectionAssert.AreEquivalent(new int[] { 1, 2, 3 }, new int[] { 1, 2, 3 }.Distinct(i => i).ToList());
+
+			CollectionAssert.AreEquivalent(new int[] { 1    }, new int[] { 1, 1       }.Distinct(i => i).ToList());
+			CollectionAssert.AreEquivalent(new int[] { 1, 2 }, new int[] { 1, 2, 1    }.Distinct(i => i).ToList());
+			CollectionAssert.AreEquivalent(new int[] { 1, 2 }, new int[] { 1, 2, 2, 1 }.Distinct(i => i).ToList());
+
+			ExceptionAssertEx.Throws<ArgumentNullException>(() => ((IEnumerable<int>)null).Distinct(i => i              ).ToList());
+			ExceptionAssertEx.Throws<ArgumentNullException>(() => new int[] { }           .Distinct((Func<int, int>)null).ToList());
+		}
+
 		[TestMethod]
 		public void LongRange()
 		{

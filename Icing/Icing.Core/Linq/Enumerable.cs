@@ -44,6 +44,35 @@ namespace Icing.Linq
 */
 
 		/// <summary>
+		/// Produces the set intersection of two sequences according to a key.
+		/// </summary>
+		/// <typeparam name="TSource">The type of the elements of the input sequences.</typeparam>
+		/// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
+		/// <param name="first">An <see cref="IEnumerable&lt;T&gt;"/> whose distinct elements that also appear in <paramref name="second"/> will be returned.</param>
+		/// <param name="second">An <see cref="IEnumerable&lt;T&gt;"/> whose distinct elements that also appear in the first sequence will be returned.</param>
+		/// <param name="keySelector">A function to extract a key from an element.</param>
+		/// <returns>A sequence that contains the elements that form the set intersection of two sequences.</returns>
+		/// <exception cref="ArgumentNullException"><paramref name="first"/>, <paramref name="second"/>, or <paramref name="keySelector"/> is null.</exception>
+		public static IEnumerable<TSource> Intersect<TSource, TKey>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector)
+		{
+			return first.Intersect(second, new KeyEqualityComparer<TSource, TKey>(keySelector));
+		}
+
+		/// <summary>
+		/// Returns distinct elements from a sequence according to a key.
+		/// </summary>
+		/// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+		/// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
+		/// <param name="source">The sequence to remove duplicate elements from.</param>
+		/// <param name="keySelector">A function to extract a key from an element.</param>
+		/// <returns>An <see cref="IEnumerable&lt;T&gt;"/> that contains distinct elements from the source sequence.</returns>
+		/// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> is null.</exception>
+		public static IEnumerable<TSource> Distinct<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
+		{
+			return source.Distinct(new KeyEqualityComparer<TSource, TKey>(keySelector));
+		}
+
+		/// <summary>
 		/// Generates a sequence of integral numbers within a specified range.
 		/// </summary>
 		/// <param name="start">The value of the first integer in the sequence.</param>
@@ -86,6 +115,11 @@ namespace Icing.Linq
 			/// <param name="keySelector">The key selector.</param>
 			public KeyEqualityComparer(Func<TSource, TKey> keySelector)
 			{
+				if (keySelector == null)
+				{
+					throw new ArgumentNullException("keySelector");
+				}
+
 				KeySelector = keySelector;
 			}
 

@@ -12,7 +12,9 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>$description$</description>
 		<releaseNotes>
-			Add long/Int64 overload to PadNumber
+			Add IEnumerable<T> extensions that take a lambda expression:
+			- Intersect
+			- Distinct
 		</releaseNotes>
 		<copyright>Copyright $author$</copyright>
 		<tags>extension extensions system core string int linq performance benchmark benchmarking</tags>
